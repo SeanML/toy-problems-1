@@ -9,6 +9,28 @@
 // characterFrequency("") => []
 
 // Code:
-function characterFrequency (string) {
+const characterFrequency = (string) => {
+  let result = [];
+  let chars = {};
+  string.split('').forEach((letter) => {
+    chars[letter] ? chars[letter]++ : chars[letter] = 1;
+  });
 
-}
+  for(let key in chars) {
+    result.push([key, chars[key]]);
+  }
+  
+  return result.sort((a, b) => {
+    if(a[1] === b[1]) {
+      if(a[0] > b[0]) {
+        return 1;
+      } else if(a[0] < b[0]) {
+        return -1;
+      }
+      return 0;
+    } else if(a[1] > b[1]) {
+      return -1;
+    }
+    return 1;
+  });
+};
