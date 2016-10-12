@@ -12,6 +12,23 @@
 // climbStairs(10) => 89
 
 // Code:
-function climbStairs (n) {
 
-}
+// Iterative O(n)
+const climbStairs = (n) => {
+  let a = 1;
+  let b = 0;
+  while(n >= 0) {
+    let temp = a;
+    a = a + b;
+    b = temp;
+    n--;
+  }
+  return b;
+};
+
+// Dynamic O(n)
+const climbStairs = (n, memoized = {}) => {
+  if(n < 3) { return n; }
+  if(memoized[n]) return memoized[n];
+  return memoized[n] = climbStairs(n - 1, memoized) + climbStairs(n - 2, memoized);
+};
