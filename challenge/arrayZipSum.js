@@ -10,6 +10,19 @@
 // zipSum([ 10, 20 ], [ 1, 2, 3 ] ) => [ 11, 22 ]
 
 // Code:
-var zipSum = function(xs, ys) {
 
-}
+// Naive
+const zipSum = (xs, ys) => {
+  let result = [];
+  for(let i = 0; i < Math.min(xs.length, ys.length); i++) {
+    result[i] = xs[i] + ys[i];
+  }
+  return result;
+};
+
+// Fancy
+const zipSum = (xs, ys) => {
+  return xs.slice(0, ys.length).map((num, i) => {
+    return num + ys[i];
+  });
+};
