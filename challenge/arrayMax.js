@@ -8,6 +8,12 @@
 // max([ 5 ]  ) => 5
 
 // Code:
-function max (numbers){
-
+const max = (numbers) => {
+  let maxVal;
+  numbers.forEach((num) => {
+    if(!maxVal || num > maxVal) {
+      maxVal = num;
+    }
+  });
+  return maxVal;
 }
