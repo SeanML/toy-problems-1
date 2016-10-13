@@ -37,6 +37,23 @@
 
 
 // Code:
-var asyncMap = function(tasks, callback){
-  //Your code here
-}; 
+const asyncMap = (tasks, callback) => {
+  let results = [];
+  let counter = 0;
+  tasks.forEach((task, i) => {
+    task((res) => {
+      counter++;
+      results[i] = res;
+      if(counter === tasks.length) callback(results);
+    });
+  });
+};
+
+
+
+
+
+
+
+
+
