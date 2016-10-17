@@ -28,7 +28,7 @@ const climbStairs = (n) => {
 
 // Dynamic O(n)
 const climbStairs = (n, memoized = {}) => {
-  if(n < 3) { return n; }
+  if(n < 3) return n;
   if(memoized[n]) return memoized[n];
   return memoized[n] = climbStairs(n - 1, memoized) + climbStairs(n - 2, memoized);
 };
