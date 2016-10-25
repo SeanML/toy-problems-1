@@ -33,5 +33,20 @@
 const coins = [1,2,5,10,20,50,100,200];
 
 const coinSums = (total) => {
+  let combinations = 0;
+  let currCount = 0;
+  const recurse = (currTotal) => {
+    if(currTotal === total) {
+      combinations += 1;
+      return;
+    }
   
+    for(let i = 0; i < coins.length; i++) {
+      if(currCount + coins[i] <= total) {
+        recurse(currCount + coins[i]);
+      }
+    }
+  }
+  recurse(currCount);
+  return combinations;
 }

@@ -16,14 +16,14 @@
  * @return {number}
  */
 const compareVersion = (version1, version2) => {
-    let split1 = version1.split('.').map(e => Number(e));
-    let split2 = version2.split('.').map(e => Number(e));
-    for(let i = 0; i < Math.max(split1.length, split2.length); i++) {
-        if(!split1[i]) split1[i] = 0;
-        if(!split2[i]) split2[i] = 0;
-        if(split1[i] > split2[i]) {
+    let arr1 = version1.split('.');
+    let arr2 = version2.split('.');
+    for(let i = 0; i < Math.max(arr1.length, arr2.length); i++) {
+        if(!arr1[i]) arr1[i] = 0;
+        if(!arr2[i]) arr2[i] = 0;
+        if(Number(arr1[i]) > Number(arr2[i])) {
             return 1;
-        } else if(split1[i] < split2[i]) {
+        } else if(Number(arr1[i]) < Number(arr2[i])) {
             return -1;
         }
     }
