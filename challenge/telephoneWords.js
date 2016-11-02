@@ -14,6 +14,21 @@
 
 // Code:
 
-function telephoneWords(digitString) {
-
-}
+const keyPad = ["0", "1", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"];
+const telephoneWords = (str) => {
+  str = str.split('');
+  let results = [];
+  const recurse = (char, combination, index) => {
+    if(combination.length === str.length) {
+      results.push(combination);
+      return;
+    }
+    
+    for(let i = 0; i < keyPad[Number(char)].length; i++) {
+      recurse(str[index + 1], combination + keyPad[char][i], index + 1);
+    }
+  };
+  
+  recurse(str[0], '', 0);
+  return results;
+};

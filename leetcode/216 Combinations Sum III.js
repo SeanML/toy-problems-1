@@ -24,24 +24,23 @@
  
 const combinationSum3 = (k, n) => {
   let result = [];
-  let available = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const combinations = (sum, currArr, index) => {
-    let newAvail = null;
-    if(sum === n && currArr.length === k) {
-      newAvail = currArr.slice();
-      result.push(newAvail);
+  let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const recurse = (sum, arr, index) => {
+    let sumArr = null;
+    if(sum === n && arr.length === k) {
+      result.push(arr);
       return;
     }
-    if(sum > n || currArr.length > k || index + 1 >= available.length) {
+    if(sum > n || arr.length > k || index + 1 >= nums.length) {
       return;
     }
-    for(let i = index + 1; i < available.length; i++) {
-      newAvail = currArr.slice();
-      newAvail.push(available[i]);
-      combinations(sum + available[i], newAvail, i);
+    for(let i = index + 1; i < nums.length; i++) {
+      sumArr = arr.slice();
+      sumArr.push(nums[i]);
+      recurse(sum + nums[i], sumArr, i);
     }
   };
 
-  combinations(0, [], -1);
+  recurse(0, [], -1);
   return result;
 };
