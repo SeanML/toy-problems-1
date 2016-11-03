@@ -14,4 +14,4 @@ const filterLength = (length, array) => {
     if(array[i].length >= length) result.push(array[i]);
   }
   return result;
-}
+};
