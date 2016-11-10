@@ -14,18 +14,32 @@
 // target (required) - an integer value.
 
 // Code:
+// recursive
+// const binarySearch = (array, target) => {
+//   const recurse = (min, max) => {
+//     let midIndex = Math.floor((min + max) / 2);
+//    if(min < 0 || min >= array.length) return -1;
+//    if(max < 0 || max >= array.length) return -1;
+//     if(array[midIndex] === target) return midIndex;
+//     if(array[midIndex] < target) {
+//       return recurse(midIndex + 1, max);
+//     }
+//     if(array[midIndex] > target) {
+//       return recurse(min, midIndex - 1);
+//     }
+//   };
+//   return recurse(0, array.length - 1);
+// };
+
+// iterative
 const binarySearch = (array, target) => {
-  const recurse = (min, max) => {
-    let guess = Math.floor((min + max) / 2);
-    if(min < 0 || min >= array.length) return -1;
-    if(max < 0 || max >= array.length) return -1;
-    if(array[guess] === target) return guess;
-    if(array[guess] < target) {
-      return recurse(guess + 1, max);
-    }
-    if(array[guess] > target) {
-      return recurse(min, guess - 1);
-    }
-  };
-  return recurse(0, array.length - 1);
+  let min = 0;
+  let max = array.length - 1;
+  while(max >= min) {
+    let mid = Math.floor((min + max) / 2);
+    if(array[mid] === target) return mid;
+    if(array[mid] < target) min = mid + 1;
+    if(array[mid] > target) max = mid - 1;
+  }
+  return -1;
 };
