@@ -64,6 +64,21 @@
 
 // Code:
 
-function mergeSort(arr){
-
-}
+const mergeSort = (arr) => {
+  if(arr.length < 2) return arr;
+  let mid = Math.floor(arr.length / 2);
+  let left = arr.slice(0, mid);
+  let right = arr.slice(mid);
+  
+  const merge = (l, r) => {
+    let result = [];
+    let idxL = 0;
+    let idxR = 0;
+    while(idxL < l.length && idxR < r.length) {
+      l[idxL] < r[idxR] ? result.push(l[idxL++]) : result.push(r[idxR++]);
+    }
+    return result.concat(l.slice(idxL)).concat(r.slice(idxR));
+  };
+  
+  return merge(mergeSort(left), mergeSort(right));
+};
